@@ -23,17 +23,18 @@ services:
       - db
 
   db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_DB: l3-db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      PGPORT: 5434
-    ports:
-      - "5434:5434"
-    volumes:
-      - l3_db_data:/var/lib/postgresql/data
+  image: mysql:8.0
+  restart: always
+  environment:
+    MYSQL_DATABASE: l3-db
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+    MYSQL_ROOT_PASSWORD: root
+  ports:
+    - "3306:3306"
+  volumes:
+    - l3_db_data:/var/lib/mysql
+
 
   zep_db:
     image: ghcr.io/getzep/postgres:latest
