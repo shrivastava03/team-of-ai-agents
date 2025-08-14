@@ -23,17 +23,18 @@ services:
       - db
 
   db:
-  image: mysql:8.0
+  image: postgres:14
   restart: always
   environment:
-    MYSQL_DATABASE: l3-db
-    MYSQL_USER: root
-    MYSQL_PASSWORD: root
-    MYSQL_ROOT_PASSWORD: root
+    POSTGRES_DB: l3-db
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    PGPORT: 5434
   ports:
-    - "3306:3306"
+    - "5434:5434"
   volumes:
-    - l3_db_data:/var/lib/mysql
+    - l3_db_data:/var/lib/postgresql/data
+
 
 
   zep_db:
